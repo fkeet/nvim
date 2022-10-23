@@ -14,6 +14,11 @@ null_ls.setup({
 		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
-    diagnostics.flake8
+		--[[ formatting.rubocop, ]]
+    diagnostics.flake8,
+    --[[ diagnostics.rubocop, ]]
+    diagnostics.yamllint,
+    diagnostics.erb_lint,
+    --[[ diagnostics.semgrep.with({ extra_args = { "--config", "auto" }}), ]]
 	},
 })

@@ -20,14 +20,14 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Explore window
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<cr>", opts)
 keymap("n", "<S-h>", ":bprevious<cr>", opts)
 
 -- Misc
-keymap("n", "<leader>bq", ":wq<cr>", opts)
+keymap("n", "<leader>q", ":wq<cr>", opts)
 keymap("n", "<leader>w", ":w<cr>", opts)
 keymap("n", "<leader>a", ":qa<cr>", opts)
 keymap("n", "<leader>v", "<c-w>v", opts)
@@ -46,5 +46,15 @@ keymap(
 )
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
+keymap("n", "<leader>fs", "<cmd>Telescope persisted<cr>", opts)
 
 keymap("n", "<leader>s", "<cmd>:Git<cr>", opts)
+keymap("n", "<leader>fp", ":Format<cr>", opts)
+keymap("v", "<leader>fp", ":Format<cr>", opts)
+keymap("n", "<leader>tn", ":tabnew<cr>", opts)
+keymap(
+  "n",
+  "<leader>bh",
+  ":lua require('close_buffers').delete({type = 'hidden'})<CR>",
+  opts
+)

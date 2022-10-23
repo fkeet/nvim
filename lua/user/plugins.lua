@@ -46,7 +46,15 @@ return packer.startup(function(use)
     -- Colorschemes
     use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
     use "lunarvim/darkplus.nvim"
-    use 'sunjon/shade.nvim'
+    --[[ use 'sunjon/shade.nvim' ]]
+    use 'EdenEast/nightfox.nvim'
+    use {
+      "mcchrish/zenbones.nvim",
+      -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+      -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+      -- In Vim, compat mode is turned on as Lush only works in Neovim.
+      requires = "rktjmp/lush.nvim"
+    }
 
     -- Completion
     use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -65,19 +73,47 @@ return packer.startup(function(use)
     use "neovim/nvim-lspconfig" -- enable LSP
     use "williamboman/mason.nvim" -- simple to use language server installer
     use "williamboman/mason-lspconfig.nvim" -- simple language server installer
+    use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
     -- Telescope
     use "nvim-telescope/telescope.nvim" -- fuzzy finder
     use 'nvim-telescope/telescope-media-files.nvim'
 
     -- Misc
-    use "Shatur/neovim-session-manager"
+    --[[ use "Shatur/neovim-session-manager" ]]
     use "numToStr/Comment.nvim"
     use "JoosepAlviste/nvim-ts-context-commentString"
+    use 'kyazdani42/nvim-web-devicons'
+    use 'kyazdani42/nvim-tree.lua'
+    use 'ggandor/leap.nvim'
+    use 'tpope/vim-fugitive'
+    use 'kazhala/close-buffers.nvim'
+    use "p00f/nvim-ts-rainbow"
     use {
       "windwp/nvim-autopairs",
       config = function() require("nvim-autopairs").setup {} end
     }
+    use({
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+          require("nvim-surround").setup({
+          })
+      end
+    })
+    use {
+      'lewis6991/gitsigns.nvim',
+      config = function() require('gitsigns').setup {} end
+    }
+    use({
+      "olimorris/persisted.nvim",
+      --module = "persisted", -- For lazy loading
+      config = function()
+        require("persisted").setup()
+        require("telescope").load_extension("persisted") -- To load the telescope extension
+      end,
+    })
+
 
     -- Treesitter
     use {
@@ -85,19 +121,11 @@ return packer.startup(function(use)
       run = ":TSUpdate",
       --run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
     }
-    use "p00f/nvim-ts-rainbow"
 
     -- Statusline
-    use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
-
-    -- GitSigngs
-    use {
-      'lewis6991/gitsigns.nvim',
-      config = function() require('gitsigns').setup {} end
-    }
+    use 'nvim-lualine/lualine.nvim'
+    use "akinsho/bufferline.nvim"
+    use "moll/vim-bbye"
 
     -- Automatically set up config after cloning
     if PACKER_BOOTSTRAP then
