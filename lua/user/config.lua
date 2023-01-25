@@ -1,6 +1,9 @@
 local options = {
+    colorcolumn = "80",
     backup = false,
-    clipboard = "unnamedplus",
+    --[[ clipboard = "unnamedplus", ]]
+    clipboard = "",
+    mouse = "",
     cmdheight = 2,
     completeopt = { "menuone", "noselect" },
     conceallevel = 0,
@@ -54,3 +57,14 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]]
+vim.api.nvim_create_autocmd(
+    { "FocusLost" },
+    { pattern = { "*" }, command = ":wa" }
+)
+
+vim.cmd [[
+    augroup autosaver
+        autocmd!
+        autocmd BufLeave * silent! wall
+    augroup end
+]]

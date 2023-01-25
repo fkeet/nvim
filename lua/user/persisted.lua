@@ -26,3 +26,5 @@ persisted.setup({
     after_source = nil, -- function to run after the session is sourced via telescope
   },
 })
+
+vim.cmd "SessionLoad"

@@ -64,6 +64,7 @@ return packer.startup(function(use)
     use "saadparwaiz1/cmp_luasnip" -- snippet completions
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-nvim-lua"
+    use 'simrat39/symbols-outline.nvim'
 
     -- Snippets
     use "L3MON4D3/LuaSnip" --snippet engine
@@ -78,6 +79,10 @@ return packer.startup(function(use)
     -- Telescope
     use "nvim-telescope/telescope.nvim" -- fuzzy finder
     use 'nvim-telescope/telescope-media-files.nvim'
+    use({
+      'nvim-telescope/telescope-fzf-native.nvim',
+      run = 'make'
+    })
 
     -- Misc
     --[[ use "Shatur/neovim-session-manager" ]]
@@ -89,10 +94,19 @@ return packer.startup(function(use)
     use 'tpope/vim-fugitive'
     use 'kazhala/close-buffers.nvim'
     use "p00f/nvim-ts-rainbow"
-    use {
+    use "jiaoshijie/undotree"
+    --[[ use({ ]]
+    --[[   "folke/noice.nvim", ]]
+    --[[   requires = { ]]
+    --[[     "MunifTanjim/nui.nvim", ]]
+    --[[     "rcarriga/nvim-notify", ]]
+    --[[     } ]]
+    --[[ }) ]]
+
+    use({
       "windwp/nvim-autopairs",
       config = function() require("nvim-autopairs").setup {} end
-    }
+    })
     use({
       "kylechui/nvim-surround",
       tag = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -110,7 +124,8 @@ return packer.startup(function(use)
       --module = "persisted", -- For lazy loading
       config = function()
         require("persisted").setup()
-        require("telescope").load_extension("persisted") -- To load the telescope extension
+        require("telescope")
+          .load_extension("persisted") -- To load the telescope extension
       end,
     })
 
@@ -126,6 +141,16 @@ return packer.startup(function(use)
     use 'nvim-lualine/lualine.nvim'
     use "akinsho/bufferline.nvim"
     use "moll/vim-bbye"
+
+    -- Testing
+    --
+    use {
+      "nvim-neotest/neotest",
+      requires = {
+        "antoinemadec/FixCursorHold.nvim",
+        "olimorris/neotest-rspec"
+      }
+    }
 
     -- Automatically set up config after cloning
     if PACKER_BOOTSTRAP then
