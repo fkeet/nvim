@@ -19,3 +19,4 @@ require "user.undotree_init"
 require "user.neotest"
 --[[ require "user.noice" ]]
 require "user.symbols_outline"
+require "user.rainbow_csv"

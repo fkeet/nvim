@@ -71,9 +71,9 @@ return packer.startup(function(use)
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
     -- LSP
-    use "neovim/nvim-lspconfig" -- enable LSP
     use "williamboman/mason.nvim" -- simple to use language server installer
     use "williamboman/mason-lspconfig.nvim" -- simple language server installer
+    use "neovim/nvim-lspconfig" -- enable LSP
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
     -- Telescope
@@ -86,6 +86,7 @@ return packer.startup(function(use)
 
     -- Misc
     --[[ use "Shatur/neovim-session-manager" ]]
+    use "cameron-wags/rainbow_csv.nvim"
     use "numToStr/Comment.nvim"
     use "JoosepAlviste/nvim-ts-context-commentString"
     use 'kyazdani42/nvim-web-devicons'

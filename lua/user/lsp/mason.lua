@@ -1,9 +1,12 @@
+-- List of LSP servers mason will use
 local servers = {
-  "sumneko_lua",
+  "lua_ls",
   "pyright",
   "jsonls",
   --[[ "ruby_ls", ]]
   "solargraph",
+  "tailwindcss",
+  "tsserver"
 }
 
 local settings = {
